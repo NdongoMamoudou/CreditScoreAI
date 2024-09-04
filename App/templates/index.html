@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <style>
+        /* Styles pour le formulaire et la réponse */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Simulation de votre crédit</h1>
+
+        <form action="/predict" method="post">
+            <input type="text" name="Credit_History" placeholder="Credit History" required><br>
+            <input type="text" name="Married" placeholder="Married" required><br>
+            <input type="text" name="CoapplicantIncome" placeholder="Coapplicant Income" required><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <h2>Résultat de la prédiction:</h2>
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
